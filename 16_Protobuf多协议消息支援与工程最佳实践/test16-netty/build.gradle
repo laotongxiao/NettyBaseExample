@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'com.testnetty'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //testCompile group: 'junit', name: 'junit', version: '4.12'
+    //protoc --java_out=src/main/java src/protobuf/Person.proto 这个是在terminal编译用的命令
+    compile 'io.netty:netty-all:4.1.10.Final',
+            'com.google.protobuf:protobuf-java:3.8.0-rc-1',
+            'com.google.protobuf:protobuf-java-util:3.8.0-rc-1'
+}

@@ -1,0 +1,50 @@
+apply plugin: 'java'
+apply plugin: 'com.google.protobuf'
+
+group 'com.testnetty'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //testCompile group: 'junit', name: 'junit', version: '4.12'
+    //https://github.com/grpc/grpc-java     grpc框架所在的网站
+    //注意所有的文件夹不能有中文
+    //编译Student.proto文件命令为 gradle generatProto
+    compile 'io.grpc:grpc-netty-shaded:1.20.0',
+            'io.grpc:grpc-protobuf:1.20.0',
+            'io.grpc:grpc-stub:1.20.0'
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.8'
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.7.1"
+    }
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.20.0'
+        }
+    }
+    generateProtoTasks.generatedFilesBaseDir = 'src'
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {
+                setOutputSubDir 'java'
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+syntax = "proto3";
+//改成test01xxxx为了运行重复构建出错
+package com.test01xxxx;
+option java_package = "com.test01xxxx";
+option java_outer_classname = "StudentProto";
+option java_multiple_files = true;
+
+service StudentService{
+    rpc getStudentsByAges(stream StudentRequest) returns (StudentResponseList) {}
+}
+
+message StudentRequest{
+    int32 age = 1;
+}
+message StudentResponse{
+    string name = 1;
+    int32 arg = 2;
+    string city = 3;
+}
+message StudentResponseList{
+    repeated StudentResponse studentResponse = 1;
+}
+

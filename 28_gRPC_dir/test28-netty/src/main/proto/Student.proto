@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package com.test01;
+option java_package = "com.test01";
+option java_outer_classname = "StudentProto";
+option java_multiple_files = true;
+
+service StudentService {
+    rpc getRealNameByUserName(MyRequest) returns (MyResponse){}
+}
+
+message MyRequest{
+    string userName = 1;
+}
+message MyResponse{
+    string realName =1;
+}

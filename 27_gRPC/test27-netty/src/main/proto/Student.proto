@@ -1,0 +1,18 @@
+syntax = "proto3";
+//改成test01xxxx为了运行重复构建出错
+package com.test01xxxx;
+option java_package = "com.test01xxxx";
+option java_outer_classname = "StudentProto";
+option java_multiple_files = true;
+
+service StudentService{
+    rpc bitalk(stream StreamRequest) returns (StreamResponse) {}
+}
+
+message StreamRequest{
+    string request_info = 1;
+}
+message StreamResponse{
+    string response_info = 1;
+}
+

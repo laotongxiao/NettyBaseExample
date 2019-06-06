@@ -1,0 +1,17 @@
+syntax = "proto3";
+//改成test01xxxx为了运行重复构建出错
+package com.test01xxxx;
+option java_package = "com.test01xxxx";
+option java_outer_classname = "StudentProto";
+option java_multiple_files = true;
+
+service StudentService {
+    rpc getRealNameByUserName(MyRequest) returns (MyResponse){}
+}
+
+message MyRequest{
+    string userName = 1;
+}
+message MyResponse{
+    string realName =1;
+}
